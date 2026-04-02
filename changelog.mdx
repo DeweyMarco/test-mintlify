@@ -3,12 +3,14 @@ title: Changelog
 description: Latest updates and changes to the Quotes API.
 ---
 
-<Update label="2026-04-02" description="April 2026" tags={["New", "Deprecation"]}>
+<Update label="2026-04-02" description="Week of April 2, 2026" tags={["New", "Deprecation"]}>
   ## New "marco original" category
 
-  A new `marco original` category is now available with an original quote by Marco Dewey. You can filter by this category using the [Get random quote](/api-reference/get-random-quote) or [List quotes](/api-reference/list-quotes) endpoints.
+  A new `marco original` category is now available, featuring an original quote by Marco Dewey. Filter by it using the [Get random quote](/api-reference/get-random-quote) or [List quotes](/api-reference/list-quotes) endpoints.
 
   ## Humor category deprecated
 
-  The `humor` category has been deprecated and all of its quotes have been removed. The category still appears in the API schema for backward compatibility, but it no longer returns results. Avoid using it in new integrations—it will be fully removed in a future release. See the [List categories](/api-reference/list-categories) endpoint for active categories.
+  The `humor` category has been deprecated and its quotes have been removed. It still appears in the schema for backward compatibility but no longer returns results. It will be fully removed in a future release.
+
+  The active categories are now: `marco original`, `motivation`, `philosophy`, `technology`, and `wisdom`. See the [List categories](/api-reference/list-categories) endpoint for the current list.
 </Update>
