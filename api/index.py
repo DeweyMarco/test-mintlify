@@ -17,13 +17,10 @@ QUOTES = [
     {"id": "6", "text": "The only true wisdom is in knowing you know nothing.", "author": "Socrates", "category": "wisdom"},
     {"id": "7", "text": "Yesterday I was clever, so I wanted to change the world. Today I am wise, so I am changing myself.", "author": "Rumi", "category": "wisdom"},
     {"id": "8", "text": "In three words I can sum up everything I've learned about life: it goes on.", "author": "Robert Frost", "category": "wisdom"},
-    {"id": "9", "text": "Two things are infinite: the universe and human stupidity; and I'm not sure about the universe.", "author": "Albert Einstein", "category": "humor"},
-    {"id": "10", "text": "I have not failed. I've just found 10,000 ways that won't work.", "author": "Thomas Edison", "category": "humor"},
     {"id": "11", "text": "The computer was born to solve problems that did not exist before.", "author": "Bill Gates", "category": "technology"},
     {"id": "12", "text": "Any sufficiently advanced technology is indistinguishable from magic.", "author": "Arthur C. Clarke", "category": "technology"},
     {"id": "13", "text": "The advance of technology is based on making it fit in so that you don't really even notice it.", "author": "Bill Gates", "category": "technology"},
     {"id": "14", "text": "Simplicity is the ultimate sophistication.", "author": "Leonardo da Vinci", "category": "wisdom"},
-    {"id": "15", "text": "Be yourself; everyone else is already taken.", "author": "Oscar Wilde", "category": "humor"},
     {"id": "16", "text": "Why should I go to his funeral, he isn't coming to mine.", "author": "Marco Dewey", "category": "marco original"},
 ]
 
