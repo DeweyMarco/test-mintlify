@@ -36,10 +36,10 @@ curl http://localhost:3000/quotes/random
 
 ## 4. Filter by category
 
-Get a random quote from the **motivation** category:
+Get a random quote from the **marco original** category:
 
 ```bash
-curl "http://localhost:3000/quotes/random?category=motivation"
+curl "http://localhost:3000/quotes/random?category=marco+original"
 ```
 
 List all **technology** quotes:
@@ -47,6 +47,10 @@ List all **technology** quotes:
 ```bash
 curl "http://localhost:3000/quotes?category=technology"
 ```
+
+<Note>
+  The `humor` category is deprecated and no longer contains quotes. Use one of the active categories instead: `marco original`, `motivation`, `philosophy`, `technology`, or `wisdom`.
+</Note>
 
 ## 5. Explore the endpoints
 

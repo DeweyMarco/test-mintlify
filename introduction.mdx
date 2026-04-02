@@ -35,6 +35,22 @@ All successful responses return JSON. Errors follow a consistent shape:
 }
 ```
 
-## No Authentication Required
+## Categories
+
+You can filter quotes by category. The active categories are:
+
+| Category | Description |
+|----------|-------------|
+| `marco original` | Original quotes by Marco |
+| `motivation` | Motivational and inspirational quotes |
+| `philosophy` | Philosophical quotes |
+| `technology` | Technology-related quotes |
+| `wisdom` | Quotes about wisdom and life lessons |
+
+<Warning>
+  The `humor` category is deprecated and no longer contains quotes. It may be removed in a future release. Avoid using it in new integrations.
+</Warning>
+
+## No authentication required
 
 This API is open — no API keys or tokens needed.
