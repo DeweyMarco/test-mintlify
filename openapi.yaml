@@ -1,7 +1,7 @@
 openapi: 3.1.0
 info:
   title: Quotes API
-  description: A simple API for fetching inspirational, philosophical, and humorous quotes.
+  description: A simple API for fetching inspirational and philosophical quotes.
   version: 1.0.0
 
 servers:
@@ -124,7 +124,7 @@ paths:
                     type: array
                     items:
                       $ref: "#/components/schemas/Category"
-                    example: ["humor", "motivation", "philosophy", "technology", "wisdom"]
+                    example: ["marco original", "motivation", "philosophy", "technology", "wisdom"]
 
 components:
   schemas:
@@ -155,11 +155,14 @@ components:
       type: string
       enum:
         - humor
+        - marco original
         - motivation
         - philosophy
         - technology
         - wisdom
-      description: A quote category
+      description: >
+        A quote category. Note: the `humor` category is deprecated and
+        no longer contains quotes. It may be removed in a future release.
       example: "wisdom"
 
     Error:
