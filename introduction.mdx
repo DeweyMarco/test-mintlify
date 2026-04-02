@@ -1,0 +1,40 @@
+---
+title: Introduction
+description: A lightweight REST API for fetching quotes by category.
+---
+
+## Overview
+
+The Quotes API is a simple REST API that serves a curated collection of quotes across five categories: **motivation**, **wisdom**, **philosophy**, **humor**, and **technology**.
+
+It's designed to be easy to integrate — no authentication required, JSON responses, and predictable error shapes.
+
+## Base URL
+
+```
+http://localhost:3000
+```
+
+## Available Endpoints
+
+| Method | Path | Description |
+|--------|------|-------------|
+| `GET` | `/quotes` | List all quotes, with optional filters |
+| `GET` | `/quotes/random` | Get a random quote |
+| `GET` | `/quotes/{id}` | Get a specific quote by ID |
+| `GET` | `/categories` | List available categories |
+
+## Response Format
+
+All successful responses return JSON. Errors follow a consistent shape:
+
+```json
+{
+  "error": "invalid_category",
+  "message": "Category 'foo' does not exist. Valid categories: humor, motivation, philosophy, technology, wisdom"
+}
+```
+
+## No Authentication Required
+
+This API is open — no API keys or tokens needed.

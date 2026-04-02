@@ -1,0 +1,66 @@
+---
+title: Quickstart
+description: Get the API running and make your first request in under 2 minutes.
+---
+
+## 1. Install dependencies
+
+```bash
+cd api && npm install
+```
+
+## 2. Start the server
+
+```bash
+npm start
+```
+
+The API will be available at `http://localhost:3000`.
+
+## 3. Make your first request
+
+Fetch a random quote:
+
+```bash
+curl http://localhost:3000/quotes/random
+```
+
+```json
+{
+  "id": "7",
+  "text": "Yesterday I was clever, so I wanted to change the world. Today I am wise, so I am changing myself.",
+  "author": "Rumi",
+  "category": "wisdom"
+}
+```
+
+## 4. Filter by category
+
+Get a random quote from the **motivation** category:
+
+```bash
+curl "http://localhost:3000/quotes/random?category=motivation"
+```
+
+List all **technology** quotes:
+
+```bash
+curl "http://localhost:3000/quotes?category=technology"
+```
+
+## 5. Explore the endpoints
+
+<CardGroup cols={2}>
+  <Card title="Get Random Quote" icon="shuffle" href="/api-reference/get-random-quote">
+    Fetch a surprise quote, with optional category filter
+  </Card>
+  <Card title="List Quotes" icon="list" href="/api-reference/list-quotes">
+    Browse all quotes with filtering and pagination
+  </Card>
+  <Card title="Get Quote by ID" icon="hash" href="/api-reference/get-quote-by-id">
+    Retrieve a specific quote directly
+  </Card>
+  <Card title="List Categories" icon="tag" href="/api-reference/list-categories">
+    See all available categories
+  </Card>
+</CardGroup>
