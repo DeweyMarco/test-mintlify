@@ -1,0 +1,14 @@
+---
+title: Changelog
+description: Latest updates and improvements to the Quotes API.
+---
+
+<Update label="2026-04-02" description="New category and content updates" tags={["Feature", "Update"]}>
+  ## New "marco original" category
+
+  You can now filter quotes by the new `marco original` category. Use it with any endpoint that accepts a `category` parameter — for example, [`GET /quotes?category=marco original`](/api-reference/list-quotes) or [`GET /quotes/random?category=marco original`](/api-reference/get-random-quote).
+
+  ## Humor category deprecated
+
+  The `humor` category has been deprecated and no longer contains any quotes. Requests filtering by `humor` will now return a 400 error. If you're currently using this category, update your integration to use one of the [active categories](/api-reference/list-categories) instead.
+</Update>

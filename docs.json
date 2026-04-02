@@ -14,6 +14,10 @@
         "pages": ["introduction", "quickstart"]
       },
       {
+        "group": "Changelog",
+        "pages": ["changelog"]
+      },
+      {
         "group": "API Reference",
         "openapi": "openapi.yaml",
         "pages": [
