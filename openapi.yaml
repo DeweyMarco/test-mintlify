@@ -154,15 +154,12 @@ components:
     Category:
       type: string
       enum:
-        - humor
         - marco original
         - motivation
         - philosophy
         - technology
         - wisdom
-      description: >
-        A quote category. Note: the `humor` category is deprecated and
-        no longer contains quotes. It may be removed in a future release.
+      description: A quote category.
       example: "wisdom"
 
     Error:
