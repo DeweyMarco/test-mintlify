@@ -7,7 +7,7 @@ description: A lightweight REST API for fetching quotes by category.
 
 The Quotes API is a simple REST API that serves a curated collection of quotes across categories including **motivation**, **wisdom**, **philosophy**, **technology**, and **marco original**.
 
-It's designed to be easy to integrate — no authentication required, JSON responses, and predictable error shapes.
+It's designed to be easy to integrate — no authentication required, JSON responses, and predictable error shapes. The API ships with both Node.js and Python server implementations.
 
 ## Base URL
 
@@ -48,7 +48,7 @@ You can filter quotes by category. The active categories are:
 | `wisdom` | Quotes about wisdom and life lessons |
 
 <Warning>
-  The `humor` category is deprecated and no longer contains quotes. It may be removed in a future release. Avoid using it in new integrations.
+  The `humor` category has been removed. Requests that filter by `humor` now return an error. Avoid using it in existing integrations.
 </Warning>
 
 ## No authentication required
