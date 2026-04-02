@@ -23,6 +23,13 @@
           "api-reference/list-categories"
         ]
       }
+    ],
+    "anchors": [
+      {
+        "anchor": "Changelog",
+        "href": "/changelog",
+        "icon": "clock-rotate-left"
+      }
     ]
   }
 }
