@@ -24,6 +24,7 @@ QUOTES = [
     {"id": "13", "text": "The advance of technology is based on making it fit in so that you don't really even notice it.", "author": "Bill Gates", "category": "technology"},
     {"id": "14", "text": "Simplicity is the ultimate sophistication.", "author": "Leonardo da Vinci", "category": "wisdom"},
     {"id": "15", "text": "Be yourself; everyone else is already taken.", "author": "Oscar Wilde", "category": "humor"},
+    {"id": "16", "text": "Why should I go to his funeral, he isn't coming to mine.", "author": "Marco Dewey", "category": "marco original"},
 ]
 
 VALID_CATEGORIES = sorted(set(q["category"] for q in QUOTES))
