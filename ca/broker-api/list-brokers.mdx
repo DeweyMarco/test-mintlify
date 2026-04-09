@@ -1,0 +1,24 @@
+---
+title: "List Brokers"
+description: "Returns a list of available brokers in the Canada region."
+---
+
+## List Brokers
+
+Returns all brokers available in the Canada region.
+
+### Response
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `id` | string | Unique broker identifier |
+| `name` | string | Broker display name |
+| `region` | string | Region the broker operates in |
+
+```json
+{
+  "brokers": [
+    { "id": "b2", "name": "Northern Securities", "region": "CA" }
+  ]
+}
+```

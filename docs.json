@@ -8,19 +8,96 @@
     "dark": "#15803D"
   },
   "navigation": {
-    "groups": [
+    "versions": [
       {
-        "group": "Get Started",
-        "pages": ["introduction", "quickstart"]
+        "version": "US",
+        "dropdowns": [
+          {
+            "dropdown": "Trading API v1",
+            "groups": [
+              {
+                "group": "Get Started",
+                "pages": ["us/trading-v1/introduction"]
+              },
+              {
+                "group": "API Reference",
+                "openapi": "openapi.yaml",
+                "pages": [
+                  "us/api-reference/get-random-quote",
+                  "us/api-reference/list-quotes"
+                ]
+              }
+            ]
+          },
+          {
+            "dropdown": "Trading API v2",
+            "groups": [
+              {
+                "group": "Get Started",
+                "pages": ["us/trading-v2/introduction"]
+              },
+              {
+                "group": "API Reference",
+                "openapi": "openapi.yaml",
+                "pages": [
+                  "us/api-reference/get-quote-by-id"
+                ]
+              }
+            ]
+          },
+          {
+            "dropdown": "Trading API v3",
+            "groups": [
+              {
+                "group": "Get Started",
+                "pages": ["us/trading-v3/introduction"]
+              },
+              {
+                "group": "API Reference",
+                "openapi": "openapi.yaml",
+                "pages": [
+                  "us/api-reference/list-categories"
+                ]
+              }
+            ]
+          },
+          {
+            "dropdown": "Broker API",
+            "groups": [
+              {
+                "group": "Get Started",
+                "pages": ["us/broker/introduction"]
+              },
+              {
+                "group": "API Reference",
+                "pages": [
+                  "us/broker-api/list-brokers",
+                  "us/broker-api/get-broker"
+                ]
+              }
+            ]
+          }
+        ]
       },
       {
-        "group": "API Reference",
-        "openapi": "openapi.yaml",
-        "pages": [
-          "api-reference/get-random-quote",
-          "api-reference/list-quotes",
-          "api-reference/get-quote-by-id",
-          "api-reference/list-categories"
+        "version": "Canada",
+        "dropdowns": [
+          {
+            "dropdown": "Broker API",
+            "groups": [
+              {
+                "group": "Get Started",
+                "pages": ["ca/broker/introduction"]
+              },
+              {
+                "group": "API Reference",
+                "pages": [
+                  "ca/broker-api/list-brokers",
+                  "ca/broker-api/get-broker"
+                ]
+              }
+            ]
+          }
         ]
       }
     ]
