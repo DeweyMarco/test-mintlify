@@ -4,7 +4,11 @@ description: Latest updates and changes to the Quotes API.
 ---
 
 <Update label="2026-04-13" description="Latest updates" tags={["Update"]}>
-  ## Broker API request examples and error responses
+  ## Broker API structured error responses
+
+  The [Broker API](/us/broker/introduction) now returns structured error responses with a consistent shape across all endpoints. Every error includes an `error` field for programmatic handling and a `message` field with a human-readable explanation, making it easier to build reliable integrations.
+
+  ## Broker API request examples
 
   The [Broker API](/us/broker/introduction) reference pages now include request examples and error handling details. Each endpoint shows a sample `curl` request and documents error responses, so you can integrate faster without guesswork.
 
