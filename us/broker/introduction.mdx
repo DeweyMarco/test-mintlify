@@ -51,6 +51,19 @@ curl https://api.us.example.com/broker/brokers/b1
 }
 ```
 
+## Error handling
+
+If you request a broker that does not exist, the API returns a `404` error with a consistent shape:
+
+```json
+{
+  "error": "not_found",
+  "message": "Broker with ID 'invalid' does not exist."
+}
+```
+
+Check the `error` field to determine the type of failure, and use `message` for a human-readable explanation.
+
 ## When to use the Broker API
 
 Use this API when you need to:
