@@ -43,6 +43,28 @@ List quotes filtered by category:
 curl "https://api.us.example.com/v1/quotes?category=motivation&limit=2"
 ```
 
+## Error handling
+
+If you pass an invalid category, the API returns a `400` error with a consistent shape:
+
+```json
+{
+  "error": "invalid_category",
+  "message": "Category 'foo' does not exist. Valid categories: marco original, motivation, philosophy, technology, wisdom"
+}
+```
+
+The `limit` parameter must be a positive integer. An invalid value returns:
+
+```json
+{
+  "error": "invalid_limit",
+  "message": "limit must be a positive integer"
+}
+```
+
+Check the `error` field to determine the type of failure, and use `message` for a human-readable explanation.
+
 ## When to use Trading API v1
 
 Use this version when you need to:

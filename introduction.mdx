@@ -24,9 +24,13 @@ http://localhost:3000
 | `GET` | `/quotes/{id}` | Get a specific quote by ID |
 | `GET` | `/categories` | List available categories |
 
-## Response Format
+## Response format
 
-All successful responses return JSON. Errors follow a consistent shape:
+All successful responses return JSON.
+
+## Error handling
+
+Errors follow a consistent shape with an `error` code and a human-readable `message`:
 
 ```json
 {
@@ -34,6 +38,16 @@ All successful responses return JSON. Errors follow a consistent shape:
   "message": "Category 'foo' does not exist. Valid categories: marco original, motivation, philosophy, technology, wisdom"
 }
 ```
+
+The possible error codes are:
+
+| Status | Error code | Description |
+|--------|-----------|-------------|
+| `400` | `invalid_category` | The requested category does not exist |
+| `400` | `invalid_limit` | The `limit` parameter is not a positive integer |
+| `404` | `not_found` | No resource found for the given ID |
+
+Check the `error` field to determine the type of failure, and use `message` for a human-readable explanation.
 
 ## Categories
 
