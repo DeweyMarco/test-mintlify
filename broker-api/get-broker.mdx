@@ -1,17 +1,23 @@
 ---
-title: "Get Broker"
+title: "Get broker"
 description: "Retrieve details for a specific broker by ID."
 ---
 
-## Get Broker
+## Get broker
 
 Returns details for a single broker.
 
-### Path Parameters
+### Path parameters
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
 | `id` | string | The broker ID |
+
+### Request
+
+```bash
+curl https://api.us.example.com/broker/brokers/b1
+```
 
 ### Response
 
@@ -21,5 +27,16 @@ Returns details for a single broker.
   "name": "Acme Brokerage",
   "region": "US",
   "status": "active"
+}
+```
+
+### Errors
+
+If the broker ID does not exist, the API returns a `404` error:
+
+```json
+{
+  "error": "not_found",
+  "message": "Broker with ID 'invalid' does not exist."
 }
 ```
