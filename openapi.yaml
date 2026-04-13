@@ -1,12 +1,12 @@
 openapi: 3.1.0
 info:
   title: Quotes API
-  description: A simple API for fetching inspirational and philosophical quotes.
+  description: A lightweight REST API for fetching quotes by category.
   version: 1.0.0
 
 servers:
   - url: http://localhost:3000
-    description: Local development server
+    description: Local development server (production URL coming soon)
 
 tags:
   - name: Quotes
