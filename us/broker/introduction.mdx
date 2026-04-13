@@ -1,8 +1,60 @@
 ---
 title: Broker API
-description: US region — Broker API.
+description: List and retrieve broker details in the US region.
 ---
 
-Base URL: `https://api.us.example.com/broker`
+## Overview
 
-Endpoints: List Brokers, Get Broker.
+The Broker API lets you discover and retrieve details about brokers available in the US region. Use it to list all brokers or look up a specific broker by ID.
+
+## Base URL
+
+```
+https://api.us.example.com/broker
+```
+
+## Available endpoints
+
+| Method | Path | Description |
+|--------|------|-------------|
+| `GET` | `/brokers` | [List brokers](/us/broker-api/list-brokers) — returns all brokers in the US region |
+| `GET` | `/brokers/{id}` | [Get broker](/us/broker-api/get-broker) — retrieve a specific broker by ID |
+
+## Quick example
+
+List all brokers:
+
+```bash
+curl https://api.us.example.com/broker/brokers
+```
+
+```json
+{
+  "brokers": [
+    { "id": "b1", "name": "Acme Brokerage", "region": "US" }
+  ]
+}
+```
+
+Get a specific broker:
+
+```bash
+curl https://api.us.example.com/broker/brokers/b1
+```
+
+```json
+{
+  "id": "b1",
+  "name": "Acme Brokerage",
+  "region": "US",
+  "status": "active"
+}
+```
+
+## When to use the Broker API
+
+Use this API when you need to:
+
+- Display a list of available brokers to your users
+- Look up broker details such as name, region, and status
+- Build broker selection flows in your application
