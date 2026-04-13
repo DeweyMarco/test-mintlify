@@ -97,27 +97,6 @@
             ]
           }
         ]
-      },
-      {
-        "version": "Canada",
-        "dropdowns": [
-          {
-            "dropdown": "Broker API",
-            "groups": [
-              {
-                "group": "Get Started",
-                "pages": ["ca/broker/introduction"]
-              },
-              {
-                "group": "API Reference",
-                "pages": [
-                  "ca/broker-api/list-brokers",
-                  "ca/broker-api/get-broker"
-                ]
-              }
-            ]
-          }
-        ]
       }
     ],
     "anchors": [
