@@ -1,0 +1,25 @@
+---
+title: "List Brokers"
+description: "Returns a list of available brokers."
+---
+
+## List Brokers
+
+Returns all brokers available in your region.
+
+### Response
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `id` | string | Unique broker identifier |
+| `name` | string | Broker display name |
+| `region` | string | Region the broker operates in |
+
+```json
+{
+  "brokers": [
+    { "id": "b1", "name": "Acme Brokerage", "region": "US" },
+    { "id": "b2", "name": "Northern Securities", "region": "CA" }
+  ]
+}
+```
