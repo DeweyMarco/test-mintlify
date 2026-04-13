@@ -1,14 +1,35 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "name": "Quotes API",
-  "theme": "mint",
+  "theme": "willow",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#4ADE80",
-    "dark": "#15803D"
+    "primary": "#000000",
+    "light": "#ffffff",
+    "dark": "#000000"
+  },
+  "fonts": {
+    "family": "Geist"
+  },
+  "background": {
+    "color": {
+      "light": "#ffffff",
+      "dark": "#0a0a0a"
+    }
+  },
+  "styling": {
+    "eyebrows": "breadcrumbs",
+    "codeblocks": {
+      "theme": {
+        "light": "min-light",
+        "dark": "min-dark"
+      }
+    }
   },
   "api": {
-    "baseUrl": "http://localhost:3000"
+    "baseUrl": "http://localhost:3000",
+    "playground": {
+      "proxy": false
+    }
   },
   "navigation": {
     "versions": [
