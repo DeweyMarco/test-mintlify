@@ -5,7 +5,7 @@
   "colors": {
     "primary": "#000000",
     "light": "#ffffff",
-    "dark": "#000000"
+    "dark": "#ffffff"
   },
   "fonts": {
     "family": "Geist"
@@ -32,102 +32,29 @@
     }
   },
   "navigation": {
-    "versions": [
+    "global": {
+      "anchors": [
+        {
+          "anchor": "Changelog",
+          "href": "/changelog",
+          "icon": "clock-rotate-left"
+        }
+      ]
+    },
+    "groups": [
       {
-        "version": "US",
-        "dropdowns": [
-          {
-            "dropdown": "Quotes API",
-            "groups": [
-              {
-                "group": "Get Started",
-                "pages": ["introduction", "quickstart", "changelog"]
-              },
-              {
-                "group": "API Reference",
-                "openapi": "openapi.yaml",
-                "pages": [
-                  "us/api-reference/get-random-quote",
-                  "us/api-reference/list-quotes",
-                  "us/api-reference/get-quote-by-id",
-                  "us/api-reference/list-categories"
-                ]
-              }
-            ]
-          },
-          {
-            "dropdown": "Trading API v1",
-            "groups": [
-              {
-                "group": "Get Started",
-                "pages": ["us/trading-v1/introduction"]
-              },
-              {
-                "group": "API Reference",
-                "openapi": "openapi.yaml",
-                "pages": [
-                  "us/api-reference/get-random-quote",
-                  "us/api-reference/list-quotes"
-                ]
-              }
-            ]
-          },
-          {
-            "dropdown": "Trading API v2",
-            "groups": [
-              {
-                "group": "Get Started",
-                "pages": ["us/trading-v2/introduction"]
-              },
-              {
-                "group": "API Reference",
-                "openapi": "openapi.yaml",
-                "pages": [
-                  "us/api-reference/get-quote-by-id"
-                ]
-              }
-            ]
-          },
-          {
-            "dropdown": "Trading API v3",
-            "groups": [
-              {
-                "group": "Get Started",
-                "pages": ["us/trading-v3/introduction"]
-              },
-              {
-                "group": "API Reference",
-                "openapi": "openapi.yaml",
-                "pages": [
-                  "us/api-reference/list-categories"
-                ]
-              }
-            ]
-          },
-          {
-            "dropdown": "Broker API",
-            "groups": [
-              {
-                "group": "Get Started",
-                "pages": ["us/broker/introduction"]
-              },
-              {
-                "group": "API Reference",
-                "pages": [
-                  "us/broker-api/list-brokers",
-                  "us/broker-api/get-broker"
-                ]
-              }
-            ]
-          }
+        "group": "Get Started",
+        "pages": ["introduction", "quickstart", "changelog"]
+      },
+      {
+        "group": "API Reference",
+        "openapi": "openapi.yaml",
+        "pages": [
+          "api-reference/get-random-quote",
+          "api-reference/list-quotes",
+          "api-reference/get-quote-by-id",
+          "api-reference/list-categories"
         ]
-      }
-    ],
-    "anchors": [
-      {
-        "anchor": "Changelog",
-        "href": "/changelog",
-        "icon": "clock-rotate-left"
       }
     ]
   }
