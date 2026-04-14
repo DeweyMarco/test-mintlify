@@ -1,4 +1,24 @@
 ---
-title: "List Categories"
+title: "List categories"
 openapi: "GET /categories"
 ---
+
+Returns all available quote categories. Use this to discover valid values for the `category` filter on other endpoints.
+
+## Example request
+
+```bash
+curl http://localhost:3000/categories
+```
+
+```json
+{
+  "categories": [
+    "marco original",
+    "motivation",
+    "philosophy",
+    "technology",
+    "wisdom"
+  ]
+}
+```

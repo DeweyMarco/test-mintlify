@@ -1,4 +1,32 @@
 ---
-title: "Get Quote by ID"
+title: "Get quote by ID"
 openapi: "GET /quotes/{id}"
 ---
+
+Retrieve a specific quote when you already know its ID. This is useful for bookmarking or sharing a particular quote.
+
+## Example request
+
+```bash
+curl http://localhost:3000/quotes/4
+```
+
+```json
+{
+  "id": "4",
+  "text": "The unexamined life is not worth living.",
+  "author": "Socrates",
+  "category": "philosophy"
+}
+```
+
+## Error handling
+
+If no quote matches the given ID, the API returns a `404`:
+
+```json
+{
+  "error": "not_found",
+  "message": "No quote found with id '999'"
+}
+```

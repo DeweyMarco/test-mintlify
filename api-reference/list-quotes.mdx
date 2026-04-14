@@ -1,4 +1,51 @@
 ---
-title: "List Quotes"
+title: "List quotes"
 openapi: "GET /quotes"
 ---
+
+Use `category` to filter by topic and `limit` to control how many results you get back. Both parameters are optional.
+
+## Example request
+
+Fetch up to 3 motivation quotes:
+
+```bash
+curl "http://localhost:3000/quotes?category=motivation&limit=3"
+```
+
+```json
+{
+  "quotes": [
+    {
+      "id": "1",
+      "text": "The only way to do great work is to love what you do.",
+      "author": "Steve Jobs",
+      "category": "motivation"
+    },
+    {
+      "id": "2",
+      "text": "In the middle of every difficulty lies opportunity.",
+      "author": "Albert Einstein",
+      "category": "motivation"
+    },
+    {
+      "id": "3",
+      "text": "It does not matter how slowly you go as long as you do not stop.",
+      "author": "Confucius",
+      "category": "motivation"
+    }
+  ],
+  "total": 3
+}
+```
+
+## Error handling
+
+Invalid `category` values return a `400` with the valid options. Invalid `limit` values (non-positive integers) also return a `400`:
+
+```json
+{
+  "error": "invalid_limit",
+  "message": "limit must be a positive integer"
+}
+```

@@ -1,4 +1,25 @@
 ---
-title: "Get Random Quote"
+title: "Get random quote"
 openapi: "GET /quotes/random"
 ---
+
+<Info>
+  Pass the `category` query parameter to restrict the random selection to a single category. Omit it to pick from all quotes.
+</Info>
+
+## Example request
+
+```bash
+curl "http://localhost:3000/quotes/random?category=wisdom"
+```
+
+## Error handling
+
+If you pass an invalid category, the API returns a `400` status with a list of valid categories:
+
+```json
+{
+  "error": "invalid_category",
+  "message": "Category 'foo' does not exist. Valid categories: marco original, motivation, philosophy, technology, wisdom"
+}
+```

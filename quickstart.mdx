@@ -3,21 +3,28 @@ title: Quickstart
 description: Get the API running and make your first request in under 2 minutes.
 ---
 
-## 1. Install dependencies
+## 1. Start the server
 
-```bash
-cd api && npm install
-```
+<Tabs>
+  <Tab title="Node.js">
+    Install dependencies and start the Express server:
 
-## 2. Start the server
+    ```bash
+    cd api && npm install && npm start
+    ```
+  </Tab>
+  <Tab title="Python">
+    No dependencies required — the Python server uses only the standard library:
 
-```bash
-npm start
-```
+    ```bash
+    python3 api/index.py
+    ```
+  </Tab>
+</Tabs>
 
 The API will be available at `http://localhost:3000`.
 
-## 3. Make your first request
+## 2. Make your first request
 
 Fetch a random quote:
 
@@ -34,7 +41,7 @@ curl http://localhost:3000/quotes/random
 }
 ```
 
-## 4. Filter by category
+## 3. Filter by category
 
 Get a random quote from the **marco original** category:
 
@@ -52,6 +59,20 @@ List all **technology** quotes:
 
 ```bash
 curl "http://localhost:3000/quotes?category=technology"
+```
+
+## 4. Limit results
+
+Return only the first 3 quotes:
+
+```bash
+curl "http://localhost:3000/quotes?limit=3"
+```
+
+Combine with a category filter:
+
+```bash
+curl "http://localhost:3000/quotes?category=wisdom&limit=2"
 ```
 
 ## 5. Explore the endpoints
