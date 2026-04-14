@@ -1,9 +1,12 @@
 ---
-name: "translation"
+name: "translate"
 on:
-  push: deweymarco/test-mintlify
+  push:
+    - repo: "deweymarco/test-mintlify"
 automerge: true
 ---
+
+# Agent Instructions
 
 Translate any MDX or markdown files changed by the last merged PR into all supported languages, and mirror any structural changes to the navigation config.
 
