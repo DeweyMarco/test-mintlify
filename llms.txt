@@ -1,0 +1,17 @@
+# Quotes API
+
+> A lightweight REST API for fetching quotes by category. JSON responses, no authentication, local base URL `http://localhost:3000` in OpenAPI until production is published.
+
+## Docs
+
+- [/api-reference/get-quote-by-id.md](/api-reference/get-quote-by-id.md): `GET /quotes/{id}` — retrieve a single quote by ID (OpenAPI-backed reference).
+- [/api-reference/get-random-quote.md](/api-reference/get-random-quote.md): `GET /quotes/random` — return one random quote, optional `category` filter.
+- [/api-reference/list-categories.md](/api-reference/list-categories.md): `GET /categories` — list valid category names for filters.
+- [/api-reference/list-quotes.md](/api-reference/list-quotes.md): `GET /quotes` — list quotes with optional `category` and `limit`.
+- [/changelog.md](/changelog.md): Latest updates and changes to the Quotes API documentation and product.
+- [/introduction.md](/introduction.md): Overview, endpoints table, categories, error format, and integration basics.
+- [/quickstart.md](/quickstart.md): Install dependencies, start the server, first `curl` requests, and links into API reference.
+
+## OpenAPI Specs
+
+- [openapi.yaml](/openapi.yaml)

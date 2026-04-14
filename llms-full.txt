@@ -1,0 +1,90 @@
+# Quotes API — full context
+
+> A lightweight REST API for fetching quotes by category. JSON responses, no authentication, predictable error shapes. Local base URL: `http://localhost:3000`. Production URL is not yet published.
+
+## Site map (documentation)
+
+- **Introduction** — Overview, base URL, endpoint table, response and error format, categories, no-auth note.
+- **Quickstart** — Install API deps, start server, first `curl` to `/quotes/random`, filter by category, links to API reference cards.
+- **Changelog** — Dated updates for docs and product announcements.
+- **API Reference** — Generated from `openapi.yaml`: list quotes, random quote, quote by ID, list categories.
+
+## API overview
+
+| Method | Path | Description |
+| --- | --- | --- |
+| GET | `/quotes` | List quotes; optional `category`, `limit` |
+| GET | `/quotes/random` | Random quote; optional `category` |
+| GET | `/quotes/{id}` | Quote by ID |
+| GET | `/categories` | List category names |
+
+## Categories
+
+Valid `category` values (use exact strings; URL-encode spaces):
+
+| Value | Notes |
+| --- | --- |
+| `marco original` | Original quotes |
+| `motivation` | Motivational |
+| `philosophy` | Philosophical |
+| `technology` | Tech-related |
+| `wisdom` | Life lessons |
+
+## Example requests
+
+Random quote:
+
+```http
+GET /quotes/random HTTP/1.1
+Host: localhost:3000
+```
+
+Random quote in a category:
+
+```http
+GET /quotes/random?category=technology HTTP/1.1
+Host: localhost:3000
+```
+
+List quotes with limit:
+
+```http
+GET /quotes?limit=5 HTTP/1.1
+Host: localhost:3000
+```
+
+## Example success (illustrative)
+
+```json
+{
+  "id": "7",
+  "text": "Yesterday I was clever, so I wanted to change the world. Today I am wise, so I am changing myself.",
+  "author": "Rumi",
+  "category": "wisdom"
+}
+```
+
+## Error format
+
+Errors return JSON with at least:
+
+```json
+{
+  "error": "invalid_category",
+  "message": "Category 'foo' does not exist. Valid categories: marco original, motivation, philosophy, technology, wisdom"
+}
+```
+
+## Authentication
+
+None required — do not request or document API keys for this product unless the OpenAPI spec changes.
+
+## OpenAPI
+
+Authoritative machine-readable contract: repository file `openapi.yaml` (OpenAPI 3.1), referenced by Mintlify `docs.json` for the API Reference group.
+
+## Mintlify project notes
+
+- Config: `docs.json` (`name`: Quotes API, theme willow, API `playground.proxy`: false in current config).
+- Custom agent skills: root `skill.md` and `.mintlify/skills/rest-api/SKILL.md`.
+- Agent instructions for doc maintenance: `.mintlify/AGENTS.md` (not intended for end users).
