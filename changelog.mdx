@@ -3,7 +3,11 @@ title: Changelog
 description: Latest updates and changes to the Quotes API.
 ---
 
-<Update label="2026-04-14" description="Week of April 14, 2026" tags={["Update"]}>
+<Update label="2026-04-14" description="Week of April 14, 2026" tags={["New", "Update"]}>
+  ## New: LLM-ready documentation
+
+  The Quotes API docs now include [`llms.txt`](/llms.txt) and [`llms-full.txt`](/llms-full.txt) files — structured, plain-text summaries of the API designed for AI tools and large language models. If you're building LLM-powered integrations, these files give models the context they need to work with the Quotes API without parsing the full docs site.
+
   ## Trading API and Broker API retired
 
   The versioned Trading API (v1, v2, v3) and the Broker API have been removed. All quote endpoints are now served through a single, unified [Quotes API](/api-reference/get-random-quote). If you were previously using Trading API or Broker API endpoints, switch to the equivalent Quotes API endpoints — no changes to request or response formats are needed.
