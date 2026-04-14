@@ -52,3 +52,22 @@ You can filter quotes by category. The active categories are:
 ## No authentication required
 
 This API is open — no API keys or tokens needed.
+
+## LLM-ready documentation
+
+If you're building AI-powered integrations, two plain-text files provide structured summaries of the API that large language models can consume directly:
+
+| File | Description |
+| --- | --- |
+| [`llms.txt`](/llms.txt) | Concise site map with one-line descriptions of every docs page and the OpenAPI spec |
+| [`llms-full.txt`](/llms-full.txt) | Complete API context including endpoints, categories, example requests, error format, and project notes |
+
+Point your LLM at either file so it can understand the Quotes API without parsing the full docs site. Use `llms.txt` for a quick overview or `llms-full.txt` when the model needs full request/response details.
+
+```text
+# Fetch the concise summary
+curl https://your-docs-domain/llms.txt
+
+# Fetch the full context
+curl https://your-docs-domain/llms-full.txt
+```
