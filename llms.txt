@@ -1,6 +1,6 @@
 # Quotes API
 
-> A lightweight REST API for fetching quotes by category. JSON responses, no authentication, local base URL `http://localhost:3000` in OpenAPI until production is published.
+> A REST API for fetching quotes by category. JSON responses, no authentication, local base URL `http://localhost:3000` in OpenAPI until production is published.
 
 ## Docs
 
