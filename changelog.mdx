@@ -6,19 +6,15 @@ description: Latest updates and changes to the Quotes API.
 <Update label="2026-04-14" description="Week of April 14, 2026" tags={["New", "Update"]}>
   ## New: LLM-ready documentation
 
-  The Quotes API docs now include [`llms.txt`](/llms.txt) and [`llms-full.txt`](/llms-full.txt) files — structured, plain-text summaries of the API designed for AI tools and large language models. If you're building LLM-powered integrations, these files give models the context they need to work with the Quotes API without parsing the full docs site.
-
-  ## Trading API and Broker API retired
-
-  The versioned Trading API (v1, v2, v3) and the Broker API have been removed. All quote endpoints are now served through a single, unified [Quotes API](/api-reference/get-random-quote). If you were previously using Trading API or Broker API endpoints, switch to the equivalent Quotes API endpoints — no changes to request or response formats are needed.
+  The Quotes API docs now include [`llms.txt`](/llms.txt) and [`llms-full.txt`](/llms-full.txt) — structured, plain-text summaries of the API designed for AI tools and large language models. Use `llms.txt` for a quick overview or `llms-full.txt` when you need full request and response details. See the [introduction](/introduction) page for usage examples.
 
   ## Unified API structure
 
-  All four endpoints — [Get random quote](/api-reference/get-random-quote), [List quotes](/api-reference/list-quotes), [Get quote by ID](/api-reference/get-quote-by-id), and [List categories](/api-reference/list-categories) — are now accessible from a single API surface. Regional selectors and product-level dropdowns have been removed in favor of a simpler, flat layout.
+  The versioned Trading API (v1, v2, v3), Broker API, and regional navigation have been retired. All four endpoints — [Get random quote](/api-reference/get-random-quote), [List quotes](/api-reference/list-quotes), [Get quote by ID](/api-reference/get-quote-by-id), and [List categories](/api-reference/list-categories) — are now accessible from a single, flat API surface. If you were previously using Trading API or Broker API endpoints, switch to the equivalent Quotes API endpoints — no changes to request or response formats are needed.
 
-  ## Dark mode improvements
+  ## New theme
 
-  Dark mode now uses an updated color scheme with better contrast and readability.
+  The docs site now uses the Willow theme, with improved dark mode contrast and a refreshed visual style.
 </Update>
 
 <Update label="2026-04-13" description="Latest updates" tags={["Update"]}>
