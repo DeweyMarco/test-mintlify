@@ -1,7 +1,7 @@
 ---
 name: "translation"
 on: deweymarco/test-mintlify
-  push:
+push:
 automerge: true
 ---
 
