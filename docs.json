@@ -44,7 +44,17 @@
       },
       {
         "group": "API Reference",
-        "openapi": "openapi.yaml"
+        "openapi": "openapi.yaml",
+        "pages": [
+          "GET /quotes",
+          "GET /quotes/random",
+          {
+            "group": "Get quote by ID",
+            "tag": "Beta",
+            "pages": ["GET /quotes/{id}"]
+          },
+          "GET /categories"
+        ]
       }
     ]
   }

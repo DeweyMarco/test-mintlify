@@ -1,6 +1,6 @@
 # Quotes API — full context
 
-> A lightweight REST API for fetching quotes by category. JSON responses, no authentication, predictable error shapes. Local base URL: `http://localhost:3000`. Production URL is not yet published.
+> A REST API for fetching quotes by category. JSON responses, no authentication, predictable error shapes. Local base URL: `http://localhost:3000`. Production URL is not yet published.
 
 ## Site map (documentation)
 
