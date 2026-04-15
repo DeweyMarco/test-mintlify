@@ -49,7 +49,7 @@
           "GET /quotes",
           "GET /quotes/random",
           {
-            "group": "Get quote by ID",
+            "group": "Get Quote by ID",
             "tag": "Beta",
             "pages": ["GET /quotes/{id}"]
           },
