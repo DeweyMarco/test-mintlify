@@ -24,14 +24,9 @@ These instructions apply to all automated documentation work for this Mintlify p
 
 ## Structure and navigation
 
-- **Get Started** group: `introduction`, `quickstart`, `changelog`.
+- **Get Started** group: `introduction`, `quickstart`.
 - **API Reference** group: OpenAPI-driven pages under `api-reference/` — keep filenames aligned with `docs.json` `navigation.groups` `pages` array.
 - New user-facing pages: add frontmatter `title` and `description`; keep `description` under ~300 characters for LLM directory snippets.
-
-## Changelog
-
-- Use `<Update>` components with ISO dates (`YYYY-MM-DD`) and short titles.
-- Log user-visible doc changes and API behavior changes; avoid internal-only refactor noise unless it affects readers.
 
 ## AI and LLM-facing assets
 

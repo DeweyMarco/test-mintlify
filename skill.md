@@ -25,7 +25,7 @@ metadata:
 
 ## When to use this skill
 
-Use this skill when the user is integrating with the Quotes API, writing examples, or navigating the Mintlify docs (introduction, quickstart, changelog, OpenAPI-based reference pages).
+Use this skill when the user is integrating with the Quotes API, writing examples, or navigating the Mintlify docs (introduction, quickstart, OpenAPI-based reference pages).
 
 ## Constraints
 

@@ -32,29 +32,14 @@
     }
   },
   "navigation": {
-    "global": {
-      "anchors": [
-        {
-          "anchor": "Changelog",
-          "href": "/changelog",
-          "icon": "clock-rotate-left"
-        }
-      ]
-    },
     "groups": [
       {
         "group": "Get Started",
-        "pages": ["introduction", "quickstart", "changelog"]
+        "pages": ["introduction", "quickstart"]
       },
       {
         "group": "API Reference",
-        "openapi": "openapi.yaml",
-        "pages": [
-          "api-reference/get-random-quote",
-          "api-reference/list-quotes",
-          "api-reference/get-quote-by-id",
-          "api-reference/list-categories"
-        ]
+        "openapi": "openapi.yaml"
       }
     ]
   }
