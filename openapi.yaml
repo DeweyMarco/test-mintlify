@@ -1,12 +1,23 @@
 openapi: 3.1.0
 info:
   title: Quotes API
-  description: A lightweight REST API for fetching quotes by category.
+  license:
+    name: MIT
+    identifier: MIT
+  description: |
+    A lightweight, **unauthenticated** REST API that returns JSON only. Use it to list quotes,
+    fetch a random quote, look up a quote by id, and discover valid categories.
+
+    All error responses share the same envelope: `error` (machine-readable code) and `message`
+    (human-readable detail).
   version: 1.0.0
 
 servers:
   - url: http://localhost:3000
     description: Local development server (production URL coming soon)
+
+# Public API — no authentication
+security: []
 
 tags:
   - name: Quotes
@@ -18,83 +29,163 @@ paths:
   /quotes:
     get:
       summary: List quotes
-      description: Returns a list of quotes. Optionally filter by category or limit the number of results.
+      description: |
+        Returns a paginated-style list of quotes as `{ "quotes": [...], "total": n }`.
+
+        Omit **`category`** to include every quote. Omit **`limit`** to return the full filtered
+        list (no artificial cap). When **`limit`** is set, it must be a **positive integer**;
+        invalid values yield `400` with `invalid_limit`.
       operationId: listQuotes
       tags:
         - Quotes
       parameters:
         - name: category
           in: query
-          description: Filter quotes by category
+          description: |
+            Return only quotes in this category. Must match a category returned by
+            `GET /categories` exactly (including spaces, e.g. `marco original`).
+            If the value is unknown, the API responds with `400` and `invalid_category`.
           required: false
           schema:
             $ref: "#/components/schemas/Category"
+          examples:
+            wisdom:
+              summary: Wisdom only
+              value: wisdom
+            marco_original:
+              summary: Category with a space in the name
+              value: marco original
+            motivation:
+              summary: Motivation quotes
+              value: motivation
         - name: limit
           in: query
-          description: Maximum number of quotes to return
+          description: |
+            Maximum number of quotes to return after filtering. If omitted, all matching quotes
+            are returned. Must be a positive integer (`>= 1`); non-integers and zero are rejected
+            with `400` / `invalid_limit`.
           required: false
           schema:
             type: integer
+            format: int32
             minimum: 1
-            example: 5
+            description: Positive integer; upper bound is the number of matching quotes
+          example: 5
+          examples:
+            small_page:
+              summary: First 3 quotes
+              value: 3
+            default_size:
+              summary: Five results
+              value: 5
       responses:
         "200":
-          description: A list of quotes
+          description: Successfully retrieved quotes and a total count
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  quotes:
-                    type: array
-                    items:
-                      $ref: "#/components/schemas/Quote"
-                  total:
-                    type: integer
-                    description: Number of quotes returned
-                    example: 3
+                $ref: "#/components/schemas/ListQuotesResponse"
+              examples:
+                mixed:
+                  summary: Filtered list with total
+                  value:
+                    quotes:
+                      - id: "7"
+                        text: "Yesterday I was clever, so I wanted to change the world. Today I am wise, so I am changing myself."
+                        author: "Rumi"
+                        category: wisdom
+                      - id: "8"
+                        text: "In three words I can sum up everything I've learned about life: it goes on."
+                        author: "Robert Frost"
+                        category: wisdom
+                    total: 2
+                limited:
+                  summary: Limit applied
+                  value:
+                    quotes:
+                      - id: "1"
+                        text: "The only way to do great work is to love what you do."
+                        author: "Steve Jobs"
+                        category: motivation
+                    total: 1
         "400":
           $ref: "#/components/responses/BadRequest"
 
   /quotes/random:
     get:
       summary: Get a random quote
-      description: Returns a single randomly selected quote. Optionally restrict to a specific category.
+      description: |
+        Returns **one** quote chosen uniformly at random from the full set, or from the subset
+        matching **`category`** when provided. If **`category`** is invalid, the response is `400`
+        with `invalid_category`.
       operationId: getRandomQuote
       tags:
         - Quotes
       parameters:
         - name: category
           in: query
-          description: Restrict the random selection to a specific category
+          description: |
+            If set, the random quote is drawn only from this category. Must be a valid category
+            string (see `GET /categories`).
           required: false
           schema:
             $ref: "#/components/schemas/Category"
+          examples:
+            philosophy:
+              summary: Random philosophy quote
+              value: philosophy
+            technology:
+              summary: Random technology quote
+              value: technology
       responses:
         "200":
-          description: A randomly selected quote
+          description: A single randomly selected quote
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/Quote"
+              examples:
+                sample:
+                  summary: Example random quote
+                  value:
+                    id: "12"
+                    text: "Any sufficiently advanced technology is indistinguishable from magic."
+                    author: "Arthur C. Clarke"
+                    category: technology
         "400":
           $ref: "#/components/responses/BadRequest"
 
   /quotes/{id}:
     get:
       summary: Get a quote by ID
-      description: Returns a specific quote by its unique identifier.
+      description: |
+        Returns the quote whose **`id`** matches the path segment. IDs are opaque strings defined
+        by the server (not necessarily sequential). Unknown ids return **`404`** with `not_found`.
       operationId: getQuoteById
       tags:
         - Quotes
       parameters:
         - name: id
           in: path
-          description: The unique identifier of the quote
+          description: |
+            Unique quote identifier assigned by the API (string). Use values returned in list or
+            random responses.
           required: true
           schema:
             type: string
-            example: "1"
+            minLength: 1
+            description: Quote id
+          example: "7"
+          examples:
+            first:
+              summary: Numeric string id
+              value: "1"
+            rumi:
+              summary: Quote 7
+              value: "7"
+            marco:
+              summary: Marco original quote id
+              value: "16"
       responses:
         "200":
           description: The requested quote
@@ -102,34 +193,49 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Quote"
+              examples:
+                by_id:
+                  summary: Quote 7
+                  value:
+                    id: "7"
+                    text: "Yesterday I was clever, so I wanted to change the world. Today I am wise, so I am changing myself."
+                    author: "Rumi"
+                    category: wisdom
         "404":
           $ref: "#/components/responses/NotFound"
 
   /categories:
     get:
       summary: List categories
-      description: Returns all available quote categories.
+      description: |
+        Returns every **distinct** category that appears in the quote dataset, sorted for stable
+        ordering. Use these exact strings for the `category` query parameter on other endpoints.
       operationId: listCategories
       tags:
         - Categories
       responses:
         "200":
-          description: A list of category names
+          description: Alphabetically sorted list of category names
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  categories:
-                    type: array
-                    items:
-                      $ref: "#/components/schemas/Category"
-                    example: ["marco original", "motivation", "philosophy", "technology", "wisdom"]
+                $ref: "#/components/schemas/CategoriesResponse"
+              examples:
+                default:
+                  summary: Current categories
+                  value:
+                    categories:
+                      - marco original
+                      - motivation
+                      - philosophy
+                      - technology
+                      - wisdom
 
 components:
   schemas:
     Quote:
       type: object
+      description: A single quote record
       required:
         - id
         - text
@@ -142,51 +248,108 @@ components:
           example: "7"
         text:
           type: string
-          description: The full text of the quote
+          description: Full text of the quote
           example: "Yesterday I was clever, so I wanted to change the world. Today I am wise, so I am changing myself."
         author:
           type: string
-          description: The person attributed with the quote
+          description: Person attributed with the quote
           example: "Rumi"
         category:
           $ref: "#/components/schemas/Category"
 
     Category:
       type: string
+      description: |
+        One of the categories returned by `GET /categories`. Values are case-sensitive and may
+        include spaces.
       enum:
         - marco original
         - motivation
         - philosophy
         - technology
         - wisdom
-      description: A quote category.
-      example: "wisdom"
+      example: wisdom
+
+    ListQuotesResponse:
+      type: object
+      description: Payload for `GET /quotes`
+      required:
+        - quotes
+        - total
+      properties:
+        quotes:
+          type: array
+          description: Quotes after optional category filter and limit slice
+          items:
+            $ref: "#/components/schemas/Quote"
+        total:
+          type: integer
+          format: int32
+          minimum: 0
+          description: Number of quotes in the `quotes` array (same as `quotes.length`)
+          example: 3
+
+    CategoriesResponse:
+      type: object
+      description: Payload for `GET /categories`
+      required:
+        - categories
+      properties:
+        categories:
+          type: array
+          description: Sorted list of distinct category names
+          items:
+            $ref: "#/components/schemas/Category"
+          example:
+            - marco original
+            - motivation
+            - philosophy
+            - technology
+            - wisdom
 
     Error:
       type: object
+      description: Standard error envelope for all error responses
       required:
         - error
         - message
       properties:
         error:
           type: string
-          description: A machine-readable error code
-          example: "invalid_category"
+          description: Machine-readable error code
+          example: invalid_category
         message:
           type: string
-          description: A human-readable description of the error
-          example: "Category 'foo' does not exist."
+          description: Human-readable explanation, often including valid options
+          example: "Category 'foo' does not exist. Valid categories: marco original, motivation, philosophy, technology, wisdom"
 
   responses:
     BadRequest:
-      description: Bad request — invalid query parameter
+      description: Invalid query parameter (e.g. unknown category or non-positive limit)
       content:
         application/json:
           schema:
             $ref: "#/components/schemas/Error"
+          examples:
+            invalid_category:
+              summary: Unknown category
+              value:
+                error: invalid_category
+                message: "Category 'foo' does not exist. Valid categories: marco original, motivation, philosophy, technology, wisdom"
+            invalid_limit:
+              summary: Limit not a positive integer
+              value:
+                error: invalid_limit
+                message: limit must be a positive integer
     NotFound:
-      description: The requested resource was not found
+      description: No quote exists for the given id
       content:
         application/json:
           schema:
             $ref: "#/components/schemas/Error"
+          examples:
+            missing_quote:
+              summary: Unknown id
+              value:
+                error: not_found
+                message: "No quote found with id '99'"
