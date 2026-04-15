@@ -6,11 +6,11 @@ description: Latest updates and changes to the Quotes API.
 <Update label="2026-04-14" description="Week of April 14, 2026" tags={["New", "Update"]}>
   ## New: LLM-ready documentation
 
-  The Quotes API docs now include [`llms.txt`](/llms.txt) and [`llms-full.txt`](/llms-full.txt) — plain-text summaries of the API designed for AI tools and large language models. Use `llms.txt` for a quick overview or `llms-full.txt` when you need full request and response details. See the [introduction](/introduction) page for usage examples.
+  The Quotes API docs now include [`llms.txt`](/llms.txt) and [`llms-full.txt`](/llms-full.txt). These plain-text summaries help AI tools and large language models understand the API. Use `llms.txt` for a quick overview or `llms-full.txt` when you need full request and response details. See the [introduction](/introduction) page for usage examples.
 
   ## Update: Simplified API surface
 
-  The versioned Trading API (v1, v2, v3), Broker API, and regional navigation have been retired. All four endpoints — [Get random quote](/api-reference/get-random-quote), [List quotes](/api-reference/list-quotes), [Get quote by ID](/api-reference/get-quote-by-id), and [List categories](/api-reference/list-categories) — now live under a single API with no version or region prefixes. If you were using Trading API or Broker API endpoints, switch to the equivalent Quotes API paths — request and response formats remain the same.
+  The versioned Trading API (v1, v2, v3), Broker API, and regional navigation have been retired. All four endpoints now live under a single API with no version or region prefixes: [Get random quote](/api-reference/get-random-quote), [List quotes](/api-reference/list-quotes), [Get quote by ID](/api-reference/get-quote-by-id), and [List categories](/api-reference/list-categories). If you were using Trading API or Broker API endpoints, switch to the equivalent Quotes API paths. Request and response formats remain the same.
 
   ## Update: Willow theme
 
@@ -20,7 +20,7 @@ description: Latest updates and changes to the Quotes API.
 <Update label="2026-04-13" description="Week of April 13, 2026" tags={["New", "Update"]}>
   ## New: Trading API, Broker API, and regional navigation
 
-  Three versioned Trading API products launched alongside a new Broker API for discovering broker details. The docs were organized by region with a sidebar dropdown to switch between API products. These APIs were later consolidated into the single Quotes API surface in the [April 14 update](#2026-04-14).
+  Three versioned Trading API products launched alongside a new Broker API for discovering broker details. The docs organized content by region with a sidebar dropdown to switch between API products. These APIs later merged into the single Quotes API surface in the [April 14 update](#2026-04-14).
 
   ## New: Interactive API playground
 
@@ -42,7 +42,7 @@ description: Latest updates and changes to the Quotes API.
 
   ## Humor category removed
 
-  The `humor` category has been fully removed. It no longer appears in the schema or returns any results.
+  The `humor` category is now fully removed. It no longer appears in the schema or returns any results.
 
   The active categories are now: `marco original`, `motivation`, `philosophy`, `technology`, and `wisdom`. See the [List categories](/api-reference/list-categories) endpoint for the current list.
 </Update>
