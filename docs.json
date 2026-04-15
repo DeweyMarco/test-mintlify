@@ -7,6 +7,11 @@
     "light": "#ffffff",
     "dark": "#ffffff"
   },
+  "logo": {
+    "light": "/logo/light.svg",
+    "dark": "/logo/dark.svg"
+  },
+  "favicon": "/favicon/favicon.svg",
   "fonts": {
     "family": "Geist"
   },
