@@ -6,9 +6,17 @@ public: true
 
 ## Overview
 
-The Quotes API is a simple REST API that serves a curated collection of quotes across categories including **motivation**, **wisdom**, **philosophy**, **technology**, and **marco original**.
+The Quotes API is a lightweight REST service for fetching inspirational, philosophical, and technology-focused quotes on demand. It's designed to be dropped into any app, website, or script that needs a steady supply of well-attributed quotes — think daily-quote widgets, chatbots, onboarding screens, loading states, or AI prompts.
 
-You can integrate it easily — no authentication required, JSON responses, and predictable error shapes.
+### What it does
+
+- **Serves a curated quote library** across five categories: **motivation**, **wisdom**, **philosophy**, **technology**, and **marco original**.
+- **Returns a random quote** on demand via `GET /quotes/random`, optionally scoped to a category.
+- **Lists and filters quotes** via `GET /quotes`, so you can paginate or pull every quote in a category.
+- **Looks up specific quotes by ID** via `GET /quotes/{id}` for permalinks or saved favorites.
+- **Exposes the category list** via `GET /categories` so clients can build dynamic filters without hard-coding values.
+
+Every response is JSON with a consistent shape — `id`, `text`, `author`, and `category` — and errors follow a predictable structure. There's no authentication, no rate-limiting headers to manage, and no SDK to install: a single `fetch` or `curl` call is all you need.
 
 ## Base URL
 
