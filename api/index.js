@@ -19,6 +19,13 @@ const quotes = [
   { id: "13", text: "The advance of technology is based on making it fit in so that you don't really even notice it.", author: "Bill Gates", category: "technology" },
   { id: "14", text: "Simplicity is the ultimate sophistication.", author: "Leonardo da Vinci", category: "wisdom" },
   { id: "16", text: "Why should I go to his funeral, he isn't coming to mine.", author: "Marco Dewey", category: "marco original" },
+  { id: "17", text: "The only thing we have to fear is fear itself.", author: "Franklin D. Roosevelt", category: "motivation" },
+  { id: "18", text: "I have a dream that one day this nation will rise up and live out the true meaning of its creed.", author: "Martin Luther King Jr.", category: "motivation" },
+  { id: "19", text: "That's one small step for man, one giant leap for mankind.", author: "Neil Armstrong", category: "motivation" },
+  { id: "20", text: "Imagination is more important than knowledge.", author: "Albert Einstein", category: "wisdom" },
+  { id: "21", text: "Be the change that you wish to see in the world.", author: "Mahatma Gandhi", category: "wisdom" },
+  { id: "22", text: "Life is what happens when you're busy making other plans.", author: "John Lennon", category: "wisdom" },
+  { id: "23", text: "Float like a butterfly, sting like a bee.", author: "Muhammad Ali", category: "motivation" },
 ];
 
 const VALID_CATEGORIES = [...new Set(quotes.map((q) => q.category))].sort();
