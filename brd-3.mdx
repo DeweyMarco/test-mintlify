@@ -1,4 +1,69 @@
 ---
 title: "BRD 3"
-description: "Business Requirements Document 3"
+description: "Business Requirements Document 3 — Customer-Facing Status Page"
 ---
+
+## Metadata
+
+- **Author:** Marco Dewey
+- **Stakeholders:** Platform, Support, DevRel
+- **Status:** Draft
+- **Target release:** Q3 2026
+
+## 1. Overview
+
+Launch a public status page at `status.mintlify.com` that surfaces real-time health for the dashboard, docs hosting, preview deploys, and the API. Today customers ping support during incidents because they have no independent signal, which inflates ticket volume and erodes trust.
+
+## 2. Goals
+
+- Reduce incident-related support tickets by 40%.
+- Publish incident updates within 5 minutes of detection.
+- Provide 90-day uptime history per component.
+- Allow customers to subscribe to updates via email, RSS, and webhook.
+
+## 3. Non-goals
+
+- Internal on-call tooling (handled by the existing PagerDuty setup).
+- Per-customer SLA dashboards (tracked separately in BRD #5).
+
+## 4. Components tracked
+
+- Dashboard (`app.mintlify.com`)
+- Docs hosting (`*.mintlify.app` and custom domains)
+- Preview deployments
+- Public API
+- GitHub App / CI integrations
+
+## 5. Functional requirements
+
+- Automated health checks every 30 seconds per component.
+- Manual incident creation with severity levels: investigating, identified, monitoring, resolved.
+- Markdown-supported incident updates with timestamps.
+- Scheduled maintenance windows shown 7 days in advance.
+- Subscription management (email, RSS, webhook, Slack).
+
+## 6. Non-functional requirements
+
+- Status page hosted independently of primary infra (separate region + provider).
+- 99.99% availability target for the status page itself.
+- Page load under 1s on 4G.
+- WCAG 2.1 AA accessibility.
+
+## 7. Success metrics
+
+- Ticket deflection rate during incidents.
+- Time-to-first-update on declared incidents.
+- Subscriber growth month over month.
+- Status page uptime.
+
+## 8. Milestones
+
+- **M1 (week 2):** Vendor selection (Statuspage vs. Instatus vs. self-hosted Cachet).
+- **M2 (week 5):** Component wiring + automated checks live in staging.
+- **M3 (week 7):** Subscription channels + custom domain.
+- **M4 (week 8):** Public launch + announcement post.
+
+## 9. Open questions
+
+- Do we expose regional breakdowns at launch or fast-follow?
+- Should historical incidents be indexable by search engines?
