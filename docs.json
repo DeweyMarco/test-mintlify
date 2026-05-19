@@ -53,7 +53,7 @@
             "tag": "Beta",
             "pages": ["GET /quotes/{id}"]
           },
-          "GET /categories"
+          "api-reference/list-categories"
         ]
       }
     ]

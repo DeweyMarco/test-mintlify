@@ -28,16 +28,44 @@ tags:
 paths:
   /quotes:
     get:
-      summary: List quotes
-      description: |
-        Returns a paginated-style list of quotes as `{ "quotes": [...], "total": n }`.
-
-        Omit **`category`** to include every quote. Omit **`limit`** to return the full filtered
-        list (no artificial cap). When **`limit`** is set, it must be a **positive integer**;
-        invalid values yield `400` with `invalid_limit`.
+      # ------------------------------------------------------------------
+      # ⚠️  This is the "poorly written" baseline you'd often inherit from
+      #     an engineering team. Short, vague, no examples in the prose.
+      # ------------------------------------------------------------------
+      summary: Get quotes
+      description: Returns quotes.
       operationId: listQuotes
       tags:
         - Quotes
+      # ------------------------------------------------------------------
+      # ✅  Mintlify override using the `x-mint` extension. Everything in
+      #     `x-mint.metadata` overrides the rendered page metadata, and
+      #     `x-mint.content` injects custom MDX above the auto-generated
+      #     parameter and response docs.
+      # ------------------------------------------------------------------
+      x-mint:
+        metadata:
+          title: List quotes with filters and pagination
+          sidebarTitle: List quotes
+          description: |
+            Retrieve a paginated-style list of quotes, optionally narrowed to a single category and
+            capped to a maximum result count. Ideal for building category browsers, daily-quote
+            widgets, or any UI that needs more than a single random quote at a time.
+          og:title: List quotes — Quotes API
+          og:description: Paginate, filter, and cap quote results from the Quotes API.
+        content: |
+          <Note>
+            **When to use this endpoint.** Reach for `GET /quotes` whenever you need more than one
+            quote at a time — for example, to render a category page, prefetch a carousel, or
+            populate a search index. For a single quote on demand, use
+            [`GET /quotes/random`](/api-reference/get-random-quote) instead.
+          </Note>
+
+          <Tip>
+            Combine `category` and `limit` to build lightweight category previews:
+            `GET /quotes?category=wisdom&limit=3` returns the first three wisdom quotes plus a
+            `total` counter you can use for "X of Y" UI affordances.
+          </Tip>
       parameters:
         - name: category
           in: query
@@ -113,14 +141,26 @@ paths:
 
   /quotes/random:
     get:
-      summary: Get a random quote
-      description: |
-        Returns **one** quote chosen uniformly at random from the full set, or from the subset
-        matching **`category`** when provided. If **`category`** is invalid, the response is `400`
-        with `invalid_category`.
+      # ⚠️  Terse baseline — exactly the kind of one-liner you see in the wild.
+      summary: Random quote
+      description: Returns one quote.
       operationId: getRandomQuote
       tags:
         - Quotes
+      # ✅  Rich override via x-mint.metadata + x-mint.content.
+      x-mint:
+        metadata:
+          title: Fetch a single random quote
+          sidebarTitle: Get random quote
+          description: |
+            Return one quote chosen uniformly at random from the full dataset, or from a single
+            category if `category` is supplied. The classic choice for daily-quote widgets, splash
+            screens, AI prompt seeding, and "quote of the day" notifications.
+        content: |
+          <Tip>
+            Pair this endpoint with [`GET /categories`](/api-reference/list-categories) so your
+            clients can offer a category picker without hard-coding values that may drift over time.
+          </Tip>
       parameters:
         - name: category
           in: query
@@ -157,13 +197,27 @@ paths:
 
   /quotes/{id}:
     get:
-      summary: Get a quote by ID
-      description: |
-        Returns the quote whose **`id`** matches the path segment. IDs are opaque strings defined
-        by the server (not necessarily sequential). Unknown ids return **`404`** with `not_found`.
+      # ⚠️  Terse baseline.
+      summary: Get quote
+      description: Returns a quote.
       operationId: getQuoteById
       tags:
         - Quotes
+      # ✅  Rich override via x-mint.metadata + x-mint.content.
+      x-mint:
+        metadata:
+          title: Retrieve a quote by its unique ID
+          sidebarTitle: Get quote by ID
+          description: |
+            Fetch the single quote whose `id` matches the path segment. IDs are opaque, server-assigned
+            strings — durable across deployments — so they're safe to persist in saved-quote lists,
+            permalinks, or analytics events.
+        content: |
+          <Note>
+            **Looking for an ID?** Call [`GET /quotes`](/api-reference/list-quotes) first; every entry
+            in the response includes its `id` field. Storing the `id` (rather than the quote text) is
+            the recommended way to build favorites or share links.
+          </Note>
       parameters:
         - name: id
           in: path
@@ -206,10 +260,11 @@ paths:
 
   /categories:
     get:
-      summary: List categories
-      description: |
-        Returns every **distinct** category that appears in the quote dataset, sorted for stable
-        ordering. Use these exact strings for the `category` query parameter on other endpoints.
+      # ⚠️  Terse baseline — left WITHOUT an `x-mint` override on purpose,
+      #     because this endpoint is overridden through an MDX page instead
+      #     (see api-reference/list-categories.mdx). Two approaches, same goal.
+      summary: Categories
+      description: Returns categories.
       operationId: listCategories
       tags:
         - Categories

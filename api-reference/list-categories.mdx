@@ -1,4 +1,23 @@
 ---
-title: List categories
+title: Discover every available quote category
+sidebarTitle: List categories
+description: |
+  Fetch the canonical, alphabetically sorted list of category strings the Quotes API recognizes.
+  Use it to build dynamic category pickers, validate user input before calling other endpoints, and
+  avoid hard-coding values that may change as the dataset grows.
 openapi: GET /categories
 ---
+
+<Note>
+  **Why this endpoint exists.** Other endpoints accept a `category` query parameter, but only when
+  the value is one of the categories returned here — anything else returns `400 invalid_category`.
+  Treat this endpoint as the source of truth and call it once at app startup (or cache the result)
+  rather than hard-coding the list in your client.
+</Note>
+
+<Tip>
+  Category strings are **case-sensitive** and may contain spaces (for example, `marco original`).
+  Always pass the value through unchanged when forwarding it to
+  [`GET /quotes`](/api-reference/list-quotes) or
+  [`GET /quotes/random`](/api-reference/get-random-quote).
+</Tip>
